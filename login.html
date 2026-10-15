@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login and Signup</title>
+</head>
+<body>
+
+    <h2>Signup</h2>
+
+    <input id="newUser" placeholder="Username">
+    <input id="newPass" type="password" placeholder="Password">
+    <button onclick="signup()">Signup</button>
+
+    <h2>Login</h2>
+
+    <input id="user" placeholder="Username">
+    <input id="pass" type="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+
+    <p id="msg"></p>
+
+    <script>
+        function signup() {
+            let u = document.getElementById("newUser").value;
+            let p = document.getElementById("newPass").value;
+
+            localStorage.setItem("username", u);
+            localStorage.setItem("password", p);
+
+            alert("Signup successful!");
+        }
+
+        function login() {
+            let u = document.getElementById("user").value;
+            let p = document.getElementById("pass").value;
+
+            let savedU = localStorage.getItem("username");
+            let savedP = localStorage.getItem("password");
+
+            if (u === savedU && p === savedP) {
+                document.getElementById("msg").textContent =
+                    "Login successful!";
+            } else {
+                document.getElementById("msg").textContent =
+                    "Invalid username or password!";
+            }
+        }
+    </script>
+
+</body>
+</html>
